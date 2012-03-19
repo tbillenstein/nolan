@@ -25,13 +25,6 @@ import com.thomasbillenstein.nolan.courier.Courier;
 import com.thomasbillenstein.nolan.notification.DefaultNotificationBuilder;
 import com.thomasbillenstein.nolan.notification.INotificationBuilder;
 
-//TODO config: reverse message sequence in buffer (latest on top)
-//TODO config: retryCount (if not deliverable)
-//TODO config: retryDelay
-
-//TODO TimeBasedEventEvaluator
-//TODO FTP: Zippin' log events before notifying
-
 public abstract class NotifyingAppender extends AppenderBase<ILoggingEvent>
 {
 	protected List<Courier> couriers = new ArrayList<Courier>();
