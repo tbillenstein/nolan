@@ -1,0 +1,48 @@
+<configuration>
+
+  <appender name="FACEBOOK" class="com.thomasbillenstein.nolan.appender.facebook.FacebookAppender">
+
+    <layout>
+      <pattern>%msg</pattern>
+    </layout>
+
+    <!-- you can add as many recipients as you want -->
+    <recipient>
+    	<!-- name is optional -->
+    	<name>FB - LogbackAppender</name>
+    	<credentials>
+    		<!-- LogbackAppender app -->
+    		<!-- <username>208606355822819</username> -->
+    		<!-- <accessToken>208606355822819|uvuhIYgZLoy-GfpQa_5FZsmE7Vo</accessToken> -->
+
+			<!-- LogbackAppender page (https://www.facebook.com/pages/LogbackAppender/184581974919764) -->
+    		<username>184581974919764</username>
+    		<accessToken>$$facebook-accessToken$$</accessToken>
+
+    	</credentials>
+    </recipient>
+
+	<!-- http proxy configuration
+    <proxyHost>pro-campus.noc.fiducia.de</proxyHost>
+    <proxyPort>8080</proxyPort>
+	-->
+
+    <asynchronous>false</asynchronous>
+    <debug>true</debug>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="FACEBOOK" />
+  </root>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.apache" level="INFO">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+</configuration>

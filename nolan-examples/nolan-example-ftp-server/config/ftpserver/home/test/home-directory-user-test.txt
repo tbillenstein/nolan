@@ -1,0 +1,4 @@
+11:33:42.935 [main] DEBUG com.thomasbillenstein.nolan.examples.ftp.FtpExample - debug
+11:33:42.938 [main] INFO  com.thomasbillenstein.nolan.examples.ftp.FtpExample - info
+11:33:42.939 [main] WARN  com.thomasbillenstein.nolan.examples.ftp.FtpExample - warn
+11:33:42.939 [main] ERROR com.thomasbillenstein.nolan.examples.ftp.FtpExample - error

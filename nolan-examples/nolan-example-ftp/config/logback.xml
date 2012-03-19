@@ -1,0 +1,47 @@
+<configuration>
+
+  <!-- FTP Appender -->
+  <appender name="FTP" class="com.thomasbillenstein.nolan.appender.ftp.FTPAppender">
+
+    <layout>
+      <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+    </layout>
+
+    <remoteFilename>log.%date{HH-mm-ss-SSS}.txt</remoteFilename>
+
+   	<server>
+   		<address>localhost</address>
+   		<port>21</port>
+   		<cwd></cwd>
+   	</server>
+
+    <!-- you can add as many recipients as you want -->
+    <recipient>
+    	<!-- name is optional -->
+    	<name>ftp recipient</name>
+    	<credentials>
+    		<username>test</username>
+    		<password>admin</password>
+    		<account></account>
+    	</credentials>
+    </recipient>
+
+    <asynchronous>false</asynchronous>
+    <debug>true</debug>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="FTP" />
+  </root>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.apache" level="INFO">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+</configuration>

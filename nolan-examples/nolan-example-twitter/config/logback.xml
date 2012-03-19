@@ -1,0 +1,44 @@
+<configuration>
+
+  <appender name="TWITTER" class="com.thomasbillenstein.nolan.appender.twitter.TwitterAppender">
+
+    <layout>
+      <pattern>%msg</pattern>
+    </layout>
+
+    <!-- you can add as many recipients as you want -->
+    <recipient>
+    	<!-- name is optional -->
+    	<name>@LogbackAppender</name>
+    	<credentials>
+    		<consumerKey>$$twitter-consumerKey$$</consumerKey>
+    		<consumerSecret>$$twitter-consumerSecret$$</consumerSecret>
+    		<accessToken>$$twitter-accessToken$$</accessToken>
+    		<accessTokenSecret>$$twitter-accessTokenSecret$$</accessTokenSecret>
+    	</credentials>
+    </recipient>
+
+	<!-- http proxy configuration
+    <proxyHost>pro-campus.noc.fiducia.de</proxyHost>
+    <proxyPort>8080</proxyPort>
+	-->
+
+    <asynchronous>false</asynchronous>
+    <debug>true</debug>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="TWITTER" />
+  </root>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.apache" level="INFO">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+</configuration>

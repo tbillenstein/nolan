@@ -1,0 +1,47 @@
+<configuration>
+
+  <appender name="LOGGLY" class="com.thomasbillenstein.nolan.appender.loggly.LogglyAppender">
+
+    <layout>
+      <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+    </layout>
+
+    <recipient>
+    	<!-- name is optional -->
+    	<name>recipient's name</name>
+    	<credentials>
+		    <hash>$$loggly-hash$$</hash>
+    	</credentials>
+    </recipient>
+
+    <!-- you can add as many recipients as you want -->
+	<!--
+    <recipient>
+    	<name>recipient's name</name>
+    	<credentials>
+    	</credentials>
+    </recipient>
+    -->
+
+	<!-- http proxy configuration
+    <proxyHost>pro-campus.noc.fiducia.de</proxyHost>
+    <proxyPort>8080</proxyPort>
+	-->
+
+    <asynchronous>false</asynchronous>
+
+    <debug>true</debug>
+
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="LOGGLY" />
+  </root>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+</configuration>

@@ -1,0 +1,68 @@
+<configuration>
+
+	<appender name="NOTIFO" class="com.thomasbillenstein.nolan.appender.notifo.NotifoAppender">
+
+		<layout>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+
+		<!-- Notifo supports 3 additional parameters beside the actual message -->
+
+		<!-- title: name of "notification event"; this one can be defined as a pattern, i.e. "%logger{20} - %m"
+			 the log event that triggered the notification is used to layout the title
+		-->
+		<title>%logger{20} - %m</title>
+
+		<!-- label: label describing the "application" -->
+		<label>Notifo Logback Appender</label>
+
+		<!-- uri: the uri that will be loaded when the notification is opened, must be urlencoded;
+			 if a web address, must start with http:// or https://
+		-->
+		<uri>http://thomasbillenstein.com/</uri>
+
+		<!-- you can add as many recipients as you want -->
+		<recipient>
+			<credentials>
+				<username>tbillenstein</username>
+				<apiKey>$$notifo-apiKey$$</apiKey>
+			</credentials>
+		</recipient>
+
+		<!-- configuring the default buffering; only the last 10 log messages are added to the body
+			 of the notification; 4 different buffers are seperated by the default discriminator
+			 (ch.qos.logback.core.sift.DefaultDiscriminator<E>)
+		-->
+		<buffering class="com.thomasbillenstein.nolan.buffering.DefaultBuffering">
+			<bufferSize>10</bufferSize>
+			<maxBuffers>4</maxBuffers>
+		</buffering>
+
+		<eventEvaluator class="com.thomasbillenstein.nolan.evaluator.CountingEvaluator">
+			<limit>3</limit>
+		</eventEvaluator>
+
+		<!-- http proxy configuration
+		<proxyHost>pro-campus.noc.fiducia.de</proxyHost>
+		<proxyPort>8080</proxyPort>
+		-->
+
+		<asynchronous>false</asynchronous>
+		<debug>true</debug>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="NOTIFO" />
+	</root>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.apache" level="INFO">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+</configuration>

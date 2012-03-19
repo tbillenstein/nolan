@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.thomasbillenstein.nolan</groupId>
+  <artifactId>nolan-all</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <name>Nolan - Project</name>
+  <url>http://thomasbillenstein.com/nolan/</url>
+
+  <licenses>
+    <license>
+      <name>Eclipse Public License - v 1.0</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+    <license>
+      <name>GNU Lesser General Public License, version 2.1</name>
+      <url>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>thomasbillenstein.com</name>
+    <url>http://thomasbillenstein.com/</url>
+  </organization>
+  <inceptionYear>2011</inceptionYear>
+
+  <modules>
+  	<module>nolan</module>
+  	<module>nolan-examples</module>
+  </modules>
+
+</project>
