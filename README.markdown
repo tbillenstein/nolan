@@ -4,6 +4,8 @@ Nolan - Notifying Logback Appender (SLF4J)
 Nolan is an extension to Logback, "the reliable, generic, fast and
 flexible logging library for Java", which supplies an implementation of the SLF4J API.
 
+Thanks to @ceki for Logback and SLF4J.
+
 Using Nolan is the easiest way to get a notification from your
 applications by a simple log statement.
 
